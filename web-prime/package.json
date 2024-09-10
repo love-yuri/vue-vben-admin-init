@@ -19,7 +19,7 @@
     "#/*": "./src/*"
   },
   "dependencies": {
-    "@primevue/themes": "^4.0.5",
+    "@primevue/themes": "^4.0.6",
     "@vben/access": "workspace:*",
     "@vben/common-ui": "workspace:*",
     "@vben/constants": "workspace:*",
@@ -37,7 +37,7 @@
     "@vueuse/core": "^11.0.3",
     "dayjs": "^1.11.13",
     "pinia": "2.2.2",
-    "primevue": "^4.0.5",
+    "primevue": "^4.0.6",
     "vue": "^3.5.3",
     "vue-router": "^4.4.3"
   }
