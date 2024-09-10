@@ -1,11 +1,11 @@
 /*
  * @Author: love-yuri yuri2078170658@gmail.com
  * @Date: 2024-08-11 16:05:57
- * @LastEditTime: 2024-09-09 14:20:00
+ * @LastEditTime: 2024-09-10 20:39:08
  * @Description: 基础api
  */
 
-import { requestClient } from '#/api/request';
+import { requestClient } from '#/common/base/baseApi/request';
 
 import { type BaseEntity, type RequestConfig, RequestType } from './types';
 
@@ -29,11 +29,11 @@ async function baseApi(config: RequestConfig): Promise<unknown> {
  */
 export abstract class BaseApi<T extends BaseEntity> {
   // 基础添加函数
-  protected add = (
+  protected add = <V>(
     method: RequestType,
     url: string,
     params?: any,
-  ): Promise<any> => {
+  ): Promise<V> => {
     if (url.startsWith('/')) {
       url = url.slice(1);
     }
@@ -42,7 +42,7 @@ export abstract class BaseApi<T extends BaseEntity> {
       method,
       params,
       url: `${this.baseUrl}/${url}`,
-    });
+    }) as Promise<V>;
   };
 
   abstract readonly baseUrl: string;
@@ -62,6 +62,14 @@ export abstract class BaseApi<T extends BaseEntity> {
       method: RequestType.POST,
       url: `${this.baseUrl}/delete/${id}`,
     }) as Promise<boolean>;
+  };
+
+  // 列表
+  list = (): Promise<T[]> => {
+    return baseApi({
+      method: RequestType.POST,
+      url: `${this.baseUrl}/list`,
+    }) as Promise<T[]>;
   };
 
   // 列表
