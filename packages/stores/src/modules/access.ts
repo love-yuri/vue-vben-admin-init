@@ -1,15 +1,13 @@
 /*
  * @Author: love-yuri yuri2078170658@gmail.com
  * @Date: 2024-09-07 21:03:54
- * @LastEditTime: 2024-09-09 13:09:43
+ * @LastEditTime: 2024-09-10 20:00:26
  * @Description: 访问权限
  */
 import type { MenuRecordRaw } from '@vben-core/typings';
 import type { RouteRecordRaw } from 'vue-router';
 
 import { acceptHMRUpdate, defineStore } from 'pinia';
-
-type AccessToken = null | string;
 
 interface AccessState {
   /**
@@ -23,7 +21,7 @@ interface AccessState {
   /**
    * 登录 accessToken
    */
-  accessToken: AccessToken;
+  accessToken?: string;
   /**
    * 是否已经检查过权限
    */
@@ -45,7 +43,7 @@ export const useAccessStore = defineStore('core-access', {
     setAccessRoutes(routes: RouteRecordRaw[]) {
       this.accessRoutes = routes;
     },
-    setAccessToken(token: AccessToken) {
+    setAccessToken(token?: string) {
       this.accessToken = token;
     },
     setIsAccessChecked(isAccessChecked: boolean) {
@@ -57,12 +55,12 @@ export const useAccessStore = defineStore('core-access', {
   },
   persist: {
     // 持久化
-    paths: ['accessToken', 'accessCodes'],
+    paths: ['accessToken'],
   },
   state: (): AccessState => ({
     accessMenus: [],
     accessRoutes: [],
-    accessToken: null,
+    accessToken: undefined,
     isAccessChecked: false,
     loginExpired: false,
   }),
