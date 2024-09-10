@@ -1,9 +1,10 @@
 /*
  * @Author: love-yuri yuri2078170658@gmail.com
- * @Date: 2024-09-08 15:42:02
- * @LastEditTime: 2024-09-09 13:40:36
+ * @Date: 2024-09-10 16:37:25
+ * @LastEditTime: 2024-09-10 23:29:26
  * @Description: 认证模块
  */
+
 import type { LoginAndRegisterParams } from '@vben/common-ui';
 import type { UserInfo } from '@vben/types';
 
@@ -15,9 +16,9 @@ import { resetAllStores, useAccessStore, useUserStore } from '@vben/stores';
 
 import { defineStore } from 'pinia';
 
-import { loginApi } from '#/api';
 import message from '#/common/utils/message';
 import { $t } from '#/locales';
+import { userApi } from '#/api/userApi';
 
 export const useAuthStore = defineStore('auth', () => {
   const accessStore = useAccessStore();
@@ -37,12 +38,13 @@ export const useAuthStore = defineStore('auth', () => {
   ) {
     try {
       loginLoading.value = true;
-      const userInfo: UserInfo = await loginApi(params);
+      const loginResult = await userApi.login(params);
+      const { token: accessToken, user: userInfo } = loginResult;
 
       // 如果成功获取到 accessToken
       if (userInfo) {
         // 将 accessToken 存储到 accessStore 中
-        accessStore.setAccessToken(userInfo.token ?? userInfo.username);
+        accessStore.setAccessToken(accessToken);
 
         // 获取用户信息并存储到 accessStore 中
         userStore.setUserInfo(userInfo);
@@ -85,10 +87,7 @@ export const useAuthStore = defineStore('auth', () => {
    * 更新用户信息
    */
   async function fetchUserInfo() {
-    const userInfo: null | UserInfo = {
-      username: 'admin',
-    };
-    // userInfo = await getUserInfoApi();
+    const userInfo: UserInfo = await userApi.info();
     userStore.setUserInfo(userInfo);
     return userInfo;
   }
