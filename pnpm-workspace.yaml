@@ -9,4 +9,4 @@ packages:
   - "packages/effects/*"
   - "packages/business/*"
   - "scripts/*"
-  - "web-prime"
+  - "root"

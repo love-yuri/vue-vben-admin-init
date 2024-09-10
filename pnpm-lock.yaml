@@ -911,37 +911,7 @@ importers:
         specifier: ^4.4.3
         version: 4.4.3(vue@3.5.3(typescript@5.5.4))
 
-  scripts/turbo-run:
-    dependencies:
-      '@clack/prompts':
-        specifier: ^0.7.0
-        version: 0.7.0
-      '@vben/node-utils':
-        specifier: workspace:*
-        version: link:../../internal/node-utils
-      cac:
-        specifier: ^6.7.14
-        version: 6.7.14
-
-  scripts/vsh:
-    dependencies:
-      '@vben/node-utils':
-        specifier: workspace:*
-        version: link:../../internal/node-utils
-      cac:
-        specifier: ^6.7.14
-        version: 6.7.14
-      circular-dependency-scanner:
-        specifier: ^2.2.2
-        version: 2.2.2
-      depcheck:
-        specifier: ^1.4.7
-        version: 1.4.7
-      publint:
-        specifier: ^0.2.10
-        version: 0.2.10
-
-  web-prime:
+  root:
     dependencies:
       '@primevue/themes':
         specifier: ^4.0.5
@@ -1006,6 +976,36 @@ importers:
       vue-router:
         specifier: ^4.4.3
         version: 4.4.3(vue@3.5.3(typescript@5.5.4))
+
+  scripts/turbo-run:
+    dependencies:
+      '@clack/prompts':
+        specifier: ^0.7.0
+        version: 0.7.0
+      '@vben/node-utils':
+        specifier: workspace:*
+        version: link:../../internal/node-utils
+      cac:
+        specifier: ^6.7.14
+        version: 6.7.14
+
+  scripts/vsh:
+    dependencies:
+      '@vben/node-utils':
+        specifier: workspace:*
+        version: link:../../internal/node-utils
+      cac:
+        specifier: ^6.7.14
+        version: 6.7.14
+      circular-dependency-scanner:
+        specifier: ^2.2.2
+        version: 2.2.2
+      depcheck:
+        specifier: ^1.4.7
+        version: 1.4.7
+      publint:
+        specifier: ^0.2.10
+        version: 0.2.10
 
 packages:
 
