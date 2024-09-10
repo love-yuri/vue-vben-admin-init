@@ -2,10 +2,7 @@ import type { BasicUserInfo } from '@vben-core/typings';
 
 /** 用户信息 */
 interface UserInfo extends BasicUserInfo {
-  /**
-   * accessToken
-   */
-  token?: string;
+  roles?: string[];
 }
 
 export type { UserInfo };
