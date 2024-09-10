@@ -1,0 +1,44 @@
+{
+  "name": "@vben/web-prime",
+  "version": "5.2.2",
+  "license": "MIT",
+  "author": {
+    "name": "vben",
+    "email": "ann.vben@gmail.com",
+    "url": "https://github.com/anncwb"
+  },
+  "type": "module",
+  "scripts": {
+    "build": "pnpm vite build --mode production",
+    "build:analyze": "pnpm vite build --mode analyze",
+    "dev": "pnpm vite --mode development",
+    "preview": "vite preview",
+    "typecheck": "vue-tsc --noEmit --skipLibCheck"
+  },
+  "imports": {
+    "#/*": "./src/*"
+  },
+  "dependencies": {
+    "@primevue/themes": "^4.0.5",
+    "@vben/access": "workspace:*",
+    "@vben/common-ui": "workspace:*",
+    "@vben/constants": "workspace:*",
+    "@vben/hooks": "workspace:*",
+    "@vben/icons": "workspace:*",
+    "@vben/layouts": "workspace:*",
+    "@vben/locales": "workspace:*",
+    "@vben/plugins": "workspace:*",
+    "@vben/preferences": "workspace:*",
+    "@vben/request": "workspace:*",
+    "@vben/stores": "workspace:*",
+    "@vben/styles": "workspace:*",
+    "@vben/types": "workspace:*",
+    "@vben/utils": "workspace:*",
+    "@vueuse/core": "^11.0.3",
+    "dayjs": "^1.11.13",
+    "pinia": "2.2.2",
+    "primevue": "^4.0.5",
+    "vue": "^3.5.3",
+    "vue-router": "^4.4.3"
+  }
+}
